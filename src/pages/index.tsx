@@ -6,11 +6,6 @@ import { useEffect, useRef, useState } from "react";
 import Header from "~/components/Header";
 import Mic from "../../public/Mic.svg";
 import Message from "../components/Message";
-import { PrismaClient } from "@prisma/client";
-import { Prisma } from "@prisma/client";
-import { get } from "http";
-import { prisma } from "../server/db";
-import getMessageHistory from "./api/message/get";
 import axios from "axios";
 import Spinner from "../../public/spinner.svg";
 
@@ -23,11 +18,9 @@ const Home: NextPage = () => {
 
   useEffect(() => {
     scrollTo.current?.scrollIntoView();
-    getMessageHistory("1", "1").then(() =>
-      setInterval(() => {
-        setLoaded(true);
-      }, 2000)
-    );
+    getMessageHistory("1", "1").then(() => {
+      setLoaded(true);
+    });
 
     /* 
     @getMessageHistory function takes 2 parameter => userId & charId
@@ -50,6 +43,12 @@ const Home: NextPage = () => {
       console.log(error);
     }
   };
+
+  const handleInput = (e) => {
+    e.preventDefault();
+    setMessage(e.value);
+  };
+
   const record = () => {
     if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
       navigator.mediaDevices
@@ -154,6 +153,7 @@ const Home: NextPage = () => {
             <input
               type="text"
               value={message}
+              onChange={(e) => handleInput(e)}
               placeholder="Enter your message"
               className="w-full rounded-full px-5 py-4 text-xl text-sky-900"
             />
