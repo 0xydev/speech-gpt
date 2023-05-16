@@ -1,7 +1,6 @@
 export default async function handler(req: any, res: any) {
   if (req.method == "POST") {
     const { content } = JSON.parse(req.body);
-
     const data = {
       config: {
         encoding: "MP3",
