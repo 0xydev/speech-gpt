@@ -108,7 +108,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
-      <main className="top-0 flex items-center justify-between">
+      <main className="top-0 flex items-start justify-between mb-20">
         <motion.div
           transition={{ delay: 0.15 }}
           initial={{ opacity: 0 }}
@@ -117,16 +117,17 @@ const Home: NextPage = () => {
           className="w-1/2"
         >
           <Image
-            src="/Placeholder.png"
+            src="/yalanci.png"
             alt="Placeholder"
-            width={600}
+            width={450}
             height={600}
+            quality={100}
             className="h-full"
           />
         </motion.div>
-        <div className="flex h-[700px] w-1/2 flex-col gap-y-8">
+        <div className="flex flex-col h-[700px] w-1/2 justify-end">
           <div
-            className="flex transform-gpu flex-col gap-y-8 overflow-y-scroll px-14"
+            className="flex transform-gpu flex-col-reverse gap-y-8 overflow-y-scroll px-14 mb-10"
             id="scrollbar-hide"
           >
             {loaded ? (
@@ -142,8 +143,8 @@ const Home: NextPage = () => {
               </div>
             )}
           </div>
-
-          <div className="mx-auto flex w-3/4 items-center justify-center gap-x-4">
+  
+          <div className="flex w-3/4 items-center justify-center gap-x-4">
             <Image
               src={Mic}
               alt="Mic"
@@ -162,6 +163,9 @@ const Home: NextPage = () => {
       </main>
     </div>
   );
-};
+  
+  
+  
+};  
 
 export default Home;
